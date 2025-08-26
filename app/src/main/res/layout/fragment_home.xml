@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/swipeRefreshLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/container_bg"
+
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Dashboard"
+                        android:textColor="@color/white"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        />
+                    <ImageView
+                        android:id="@+id/bell"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/bell"
+                        android:layout_marginHorizontal="16dp"
+                        app:tint="@color/white"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp"
+                    >
+                    <!--  Total Users-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/totalUsersCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Total Users"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:id="@+id/tvActiveLabel"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:id="@+id/activeTotalUsers"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="0"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:id="@+id/tvInactiveLabel"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:id="@+id/inActiveTotalUsers"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="0"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!--            Active Users-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/activeUsersCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector_2"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:id="@+id/auTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Active Users"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:id="@+id/activeActiveUsers"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="0"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Total"
+                                            android:textColor="#03A9F4"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:id="@+id/totalActiveUsers"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="0"
+                                            android:textColor="#03A9F4"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    >
+                    <!--            Users with Balance-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginTop="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/usersWithBalanceCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/user_with_balance"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Users with Balance"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:id="@+id/activeUsersWithBalance"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Total Balance"
+                                            android:textColor="#03A9F4"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:id="@+id/totalBalance"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="#03A9F4"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!--           Investment Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/investmentPlansCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector_3"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Investment Plans"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:id="@+id/activeInvestmentPlans"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:id="@+id/inActiveInvestmentPlans"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    >
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/withdrawalsCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector_4"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Withdrawals"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:id="@+id/activeWithdrawals"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:id="@+id/inActiveWithdrawals"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/chatCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector_4"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chat"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:id="@+id/chat"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    >
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/planSettingCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector_4"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Plan Setting"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/announcementCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Announcements"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    >
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/createUserCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/vector_4"
+                                android:visibility="gone"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Create User"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/addAnnouncementPoster"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Poster"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    >
+                    <!--          Withdrawals Plans -->
+
+                    <!--          Withdrawals Plans -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:paddingTop="24dp"
+                            android:background="@drawable/card_bg"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- User Icon (replace with your own drawable) -->
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Logout"
+                                    android:textStyle="bold"
+                                    android:textSize="18sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="16dp"
+                                    android:gravity="center"
+                                    android:visibility="invisible"
+                                    >
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginEnd="16dp"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Active"
+                                            android:textColor="@color/green_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="53"
+                                            android:textColor="@color/green_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="16dp"/>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="In Active"
+                                            android:textColor="@color/red_two"
+                                            android:textSize="14sp"
+                                            android:layout_marginEnd="4dp"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="25"
+                                            android:textColor="@color/red_two"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"/>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

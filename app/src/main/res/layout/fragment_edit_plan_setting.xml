@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.plan_setting.EditPlanSettingFragment"
+    android:background="@drawable/container_bg"
+    android:padding="16dp"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plan Setting"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginTop="64dp"
+                />
+            <EditText
+                android:id="@+id/level"
+                android:hint="Enter Level"
+                android:inputType="number"
+                android:background="@drawable/edittext_bg"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profit Percentage"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                />
+            <EditText
+                android:id="@+id/profitPercentage"
+                android:hint="Enter Profit Percentage"
+                android:inputType="number"
+                android:background="@drawable/edittext_bg"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Required Members"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                />
+            <EditText
+                android:id="@+id/requiredMembers"
+                android:hint="Enter Profit Percentage"
+                android:inputType="numberDecimal"
+                android:background="@drawable/edittext_bg"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnConfirm"
+                android:text="Confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_btn_bg"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_marginTop="24dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

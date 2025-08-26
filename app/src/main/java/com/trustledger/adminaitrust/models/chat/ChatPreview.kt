@@ -1,0 +1,13 @@
+package com.trustledger.adminaitrust.models.chat
+
+data class ChatPreview(
+    val userId: String = "",
+    val userName: String = "",
+    val lastMessage: String = "",
+    val timestamp: Long = 0
+) {
+    @JvmName("getUserIdCustom")
+    fun getUserId(): String {
+        return userId
+    }
+}

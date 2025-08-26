@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/container_bg"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Users with Balance"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="Select Plan Type"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/spinnerType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Plan Name"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etPlanName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:hint="Plan Name"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Plan Minimum Amount"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etMinAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:hint="Minimum Amount"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Plan Days"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etPlanDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:hint="Plan Days"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Daily Percentage"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etDailyPercentage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:hint="Daily Percentage"
+                android:inputType="numberDecimal"
+                android:textColor="@color/white"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/green_btn_bg"
+                android:text="Confirm"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

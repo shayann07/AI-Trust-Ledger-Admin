@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Admin AI Trust</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="announcement_image" />
+    <string name="preview_image">Preview</string>
+
+    <string-array name="status_options">
+        <item>All</item>
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+</resources>
