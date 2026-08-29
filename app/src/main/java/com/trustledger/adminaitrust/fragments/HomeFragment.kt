@@ -42,8 +42,8 @@ class HomeFragment : Fragment() {
     private lateinit var usersList: MutableList<User>
     private var firestore = FirebaseFirestore.getInstance()
     private var transactionsList = mutableListOf<TransactionModel>()
-    private val publicKey = "REDACTED_CP_PUB"
-    private val privateKey = "REDACTED_CP_PRIV"
+    private val publicKey = "YOUR_COINPAYMENTS_PUBLIC_KEY"
+    private val privateKey = "YOUR_COINPAYMENTS_PRIVATE_KEY"
     private val apiUrl = "https://www.coinpayments.net/api.php"
 
     private val usersCollection = firestore.collection("users")
@@ -128,8 +128,8 @@ class HomeFragment : Fragment() {
 //            try {
 //                // 1. Create user in Firebase Auth
 //                val authResult = auth.createUserWithEmailAndPassword(
-//                    "ferozafridi0303@gmail.com",
-//                    "feekhan007"
+//                    "user@example.com",
+//                    "YOUR_PASSWORD"
 //                ).await()
 //                val firebaseUid = authResult.user?.uid ?: throw Exception("No UID from Firebase Auth")
 //
@@ -143,13 +143,13 @@ class HomeFragment : Fragment() {
 //                    "createdAt" to Timestamp.now(),
 //                    "createdByAdmin" to true,
 //                    "lastName" to "Afridi",
-//                    "password" to "feekhan007", // WARNING: Never store plain passwords in production!
-//                    "phoneNumber" to "03000000027",
+//                    "password" to "YOUR_PASSWORD", // WARNING: Never store plain passwords in production!
+//                    "phoneNumber" to "00000000000",
 //                    "docId" to userDocRef.id,
 //                    "referralCode" to "U5684",
 //                    "name" to "Feroz",
 //                    "isBlocked" to false,
-//                    "email" to "ferozafridi0303@gmail.com",
+//                    "email" to "user@example.com",
 //                    "status" to "inactive"
 //                )
 //                userDocRef.set(userData).await()

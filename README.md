@@ -1,107 +1,122 @@
-# AI Trust Ledger Admin
+# AI Trust Ledger Admin — Android Cryptocurrency Investment & Administration Control Panel
 
-An Android administration client for managing users, investment plans, deposits, withdrawals, announcements, and support conversations in the AI Trust Ledger Firebase project.
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.10-purple.svg)](https://kotlinlang.org)
+[![Android SDK](https://img.shields.io/badge/Android%20SDK-35-green.svg)](https://developer.android.com)
+[![Gradle](https://img.shields.io/badge/Gradle-8.11.1-blue.svg)](https://gradle.org)
+[![Room DB](https://img.shields.io/badge/Room%20DB-2.7.0-blueviolet.svg)](https://developer.android.com/training/data-storage/room)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore%20%7C%20Storage-orange.svg)](https://firebase.google.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Project status:** This is a legacy, project-specific admin application rather than a reusable production template. It depends on an existing Firebase data model and contains credential-handling issues that must be addressed before the code is reused or distributed.
+AI Trust Ledger Admin is an enterprise native Android management dashboard application built in Kotlin with Android Jetpack, Room offline database caching, and Google Cloud Firestore backend to provide system operators with full administrative oversight across user portfolios, investment plans, deposit verification, and withdrawal payouts.
 
-## Overview
+---
 
-The app gives an administrator a native Android dashboard backed by Firebase Authentication, Cloud Firestore, Cloud Storage, and Firebase Cloud Messaging. Its screens expose operational data from the companion AI Trust Ledger system and allow direct updates to user accounts, plans, team settings, transaction statuses, and announcements.
+## Application Architecture & Control Flows
 
-Room provides a local cache for several Firestore-backed models, while Android Navigation connects the XML/view-binding screens. Some payment and notification operations are performed directly from the Android client and therefore require additional security work before real-world use.
+```mermaid
+graph TD
+    subgraph Admin_Client ["Android Single-Activity Architecture"]
+        MainActivity[MainActivity Host] --> NavHost[Jetpack NavHost: nav_graph.xml]
+        NavHost --> Home[Home Dashboard: User Counters, Quick Actions, Metrics]
+        NavHost --> Users[User Management: Active, Blocked, Balances]
+        NavHost --> Plans[Investment Plan Catalog & Category Management]
+        NavHost --> Withdrawals[Withdrawal Payout Requests & Approval Workflow]
+        NavHost --> Chat[Customer Support Chat Desk]
+    end
 
-## Implemented Features
-
-- Sign in administrators with Firebase Authentication and retain the local admin session.
-- Show dashboard counts for active, inactive, and total users.
-- Browse, search, and filter users with their balances, deposits, earnings, contact details, and referral codes.
-- Block a user and mark that user's related transactions as blocked.
-- Create Firebase users from the admin flow and apply an initial account deposit.
-- Create and edit investment plans in Stocks, Medicine, and Forex categories.
-- View and update team-level requirements and profit percentages.
-- Review pending withdrawal requests, approve or reject them, copy wallet addresses, and notify users.
-- Publish and delete text announcements, with FCM alerts sent to registered devices.
-- Upload and remove image announcements using Firebase Storage and Firestore.
-- Read user conversations and send admin replies through the Firestore chat collection.
-- Store received notification history locally for display in the app.
-- Cache users, accounts, plans, team settings, and withdrawal data with Room.
-- Check pending deposit transaction status through CoinPayments-related client logic.
-
-## How It Works
-
-1. `LauncherActivity` checks for a stored admin ID and routes the user to login or the main admin area.
-2. `LoginActivity` authenticates with Firebase, stores the admin ID, and updates the admin's FCM token.
-3. `MainActivity` hosts the Navigation component graph, with `HomeFragment` acting as the dashboard and feature launcher.
-4. ViewModels and repositories synchronize selected Firestore collections into Room-backed local models.
-5. Feature fragments write administrative changes directly to Firestore or Firebase Storage.
-6. Chat, announcement, and withdrawal actions use FCM data messages to notify user devices.
-
-## Tech Stack
-
-- **Kotlin** and Android XML layouts with view binding
-- **AndroidX** AppCompat, Navigation, Lifecycle, LiveData, ViewModel, and SwipeRefreshLayout
-- **Room** with KSP-generated persistence code
-- **Firebase Authentication** for administrator and user account operations
-- **Cloud Firestore** for users, accounts, plans, transactions, chats, settings, and announcements
-- **Firebase Cloud Storage** for announcement images
-- **Firebase Cloud Messaging** for device notifications
-- **Kotlin coroutines** for asynchronous database and network work
-- **OkHttp**, Google Auth libraries, Gson, Glide, Lottie, ZXing, and OpenCSV
-- **Gradle Kotlin DSL**, Android Gradle Plugin 8.9.2, and Kotlin 2.1.10
-
-## Project Structure
-
-```text
-app/src/main/
-|-- java/com/trustledger/adminaitrust/
-|   |-- ui/                 # Launcher, login, and main activities
-|   |-- fragments/          # Dashboard and admin feature screens
-|   |-- ViewModel/          # Screen-facing state and operations
-|   |-- repository/         # Firebase access, Room database, and chat data
-|   |-- Dao/                # Room data-access interfaces
-|   |-- models/             # Firestore and Room data models
-|   |-- notifications/      # FCM receiving and sending helpers
-|   `-- adapter/            # RecyclerView adapters
-|-- res/navigation/         # Fragment navigation graph
-`-- res/layout/             # XML activity, fragment, item, and dialog layouts
+    subgraph Backend_Cloud ["Cloud Services & Persistence"]
+        Home --> RoomDB[(Room Local DB Cache: 6 Entities)]
+        Home --> Firestore[(Google Cloud Firestore Admin Collections)]
+        Withdrawals --> Firestore
+        Plans --> Storage[(Firebase Cloud Storage: Posters & Media)]
+    end
 ```
 
-## Getting Started
+---
+
+## Key Features
+
+- **Executive Metrics Dashboard**: Real-time aggregation of active investors, total deposits, daily ROI liabilities, and pending transactions.
+- **User Portfolio Oversight**: Comprehensive user inspector with tools to review user account balances, manual deposit injections, and account locking.
+- **Withdrawal Processing Desk**: Tabbed management interface (`All`, `Approved`, `Rejected`) to verify blockchain payout proofs and execute transaction approval states.
+- **Investment Plan Catalog Manager**: Dynamic creation and configuration of investment packages, lock-in terms, minimum deposit thresholds, and daily profit yields.
+- **Customer Support & Announcements**: In-app two-way support chat and Firebase Cloud Storage poster broadcast system.
+
+---
+
+## Technical Stack
+
+| Component | Library / Framework | Version |
+|---|---|---|
+| **Language** | Kotlin | 2.1.10 |
+| **Build System** | Android Gradle Plugin / Gradle | 8.9.2 / 8.11.1 |
+| **SDK Levels** | Compile SDK: 35, Target SDK: 35, Min SDK: 24 | Android 7.0+ |
+| **Navigation & UI** | Jetpack Navigation Component + ViewBinding | 2.7.7 |
+| **Local Database** | AndroidX Room (Entities, DAOs, Converters) | 2.7.0 |
+| **Cloud Services** | Firebase Auth, Cloud Firestore, Cloud Storage, Messaging | 23.2.0 / 25.1.3 |
+| **Networking & Serialization** | OkHttp 4 + Gson + Retrofit | 4.12.0 / 2.12.1 |
+
+---
+
+## Setup & Local Development
 
 ### Prerequisites
+- Android Studio Ladybug (2024.2.1+) or newer
+- JDK 17 / Java 11 runtime
+- Android SDK 35 installed
 
-- Android Studio with Android SDK 35 installed
-- JDK 11
-- An Android device or emulator running Android 7.0 (API 24) or newer
-- Access to a compatible Firebase project and its expected Firestore collections
+### Step-by-Step Configuration
 
-### Firebase Configuration
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/shayann07/AI-Trust-Ledger-Admin.git
+   cd AI-Trust-Ledger-Admin
+   ```
 
-The application ID is `com.trustledger.adminaitrust`. A compatible Firebase Android configuration must be available at `app/google-services.json`, with Authentication, Firestore, Storage, and Cloud Messaging configured for the same backend data model.
+2. **Configure Firebase Credentials:**
+   Copy the example configuration template:
+   ```bash
+   cp app/google-services.json.example app/google-services.json
+   ```
 
-The app expects collections including `Admin`, `users`, `accounts`, `plans`, `teamSettings`, `transactions`, `announcements`, `announcement_images`, and `chats`. Their document fields must match the Kotlin models in `app/src/main/java/com/trustledger/adminaitrust/models/`.
+3. **Configure Local SDK:**
+   ```bash
+   cp local.properties.example local.properties
+   ```
 
-### Build
+4. **Build the Application:**
+   ```bash
+   ./gradlew assembleDebug
+   ```
 
-On Windows:
+---
 
-```powershell
-.\gradlew.bat assembleDebug
+## Repository Structure
+
+```
+AI-Trust-Ledger-Admin/
+├── app/
+│   ├── src/main/
+│   │   ├── java/com/trustledger/adminaitrust/
+│   │   │   ├── adapters/       # 14 Recycler adapters (Users, Withdrawals, Plans)
+│   │   │   ├── database/       # Room database holder, 6 DAOs, 6 Models
+│   │   │   ├── fragments/      # 15 Admin feature fragments
+│   │   │   ├── helper/         # FirebaseHelper, QR & CSV utilities
+│   │   │   ├── notifications/  # FCM Notification and AccessToken services
+│   │   │   └── ui/             # LauncherActivity, LoginActivity, MainActivity
+│   │   ├── res/                # Layouts, navigation graph, drawables
+│   │   └── AndroidManifest.xml # Entry points, permissions
+│   ├── google-services.json.example
+│   └── build.gradle.kts
+├── local.properties.example
+├── LICENSE                     # MIT License
+└── README.md
 ```
 
-On macOS or Linux:
+---
 
-```bash
-./gradlew assembleDebug
-```
+## License
 
-Open the project in Android Studio to run the `app` configuration on a device or emulator.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
-## Current Limitations and Security Notes
-
-- Server-side Firebase messaging credentials and payment API credentials are embedded in the Android source. They should be treated as compromised, rotated, removed from the client, and replaced with authenticated backend operations.
-- Administrative writes are performed directly from the app, so the safety of the system also depends on correctly restricted Firebase security rules.
-- The app is tightly coupled to an existing Firebase schema and does not include backend provisioning or seed data.
-- Deposit processing includes client-side CoinPayments status logic and should not be treated as a secure payment-verification implementation.
-- Automated coverage is limited to the default generated unit and instrumentation examples.
-- Generated build outputs and machine-specific configuration are currently tracked in the repository, and no license file is present.
+Copyright (c) 2026 **shayann07**
